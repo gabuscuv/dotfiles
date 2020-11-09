@@ -1,0 +1,40 @@
+app-admin/conky nvidia
+app-emulaion/virtualbox vnc
+app-emulation/libvirt virt-network pm-utils
+app-emulation/qemu vhost-net virtfs spice usb usbredir
+dev-java/openjdk-bin gentoo-vm
+dev-java/openjdk gentoo-vm
+dev-lang/python sqlite
+games-fps/darkplaces cdsound
+gnome-base/gvfs samba fuse zeroconf
+media-fonts/powerline-fonts sourcecodepro robotomono hack ubuntumono inconsolata dejavusansmono anonymouspro droidsansmono
+media-gfx/blender cuda llvm opencl cycles openimageio
+media-libs/harfbuzz icu
+media-libs/mesa -vulkan
+media-sound/pulseaudio -bluetooth -native-headset -ofono-headset abi_x86_32
+media-video/ffmpeg openssl libcaca
+media-video/mpv libcaca
+media-video/obs-studio python speex imagemagick
+net-dns/dnsmasq script
+net-fs/samba winbind zeroconf
+net-misc/spice-gtk usbredir
+net-wireless/blueman -pulseaudio
+sys-apps/lm-sensors contrib
+sys-apps/util-linux static-libs
+sys-kernel/gentoo-sources experimental
+sys-libs/ncurses tinfo
+sys-libs/tdb python
+sys-libs/tevent python
+www-client/w3m imlib
+x11-drivers/nvidia-drivers static-libs uvm compat
+x11-misc/polybar i3wm mpd network
+x11-terms/rxvt-unicode vanilla 256-color xft fonts unicode3
+games-emulation/retroarch-assets ozone xmb
+sys-libs/zlib minizip
+app-text/texlive graphics
+app-text/texlive-core cjk xetex
+media-libs/gd fontconfig
+games-util/mangohud xnvctrl
+media-libs/gxr drm egl
+media-libs/gulkan drm
+
