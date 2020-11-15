@@ -1,12 +1,14 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$PATH:$HOME/.local/bin:$HOME/.dotnet:$HOME/.npm-global/bin:/var/lib/flatpak/exports/bin:$HOME/.gem/ruby/*/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/.dotnet:~/.npm-global/bin:/var/lib/flatpak/exports/bin:$HOME/.gem/ruby/2.5.0/bin
+
+export XR_RUNTIME_JSON=/usr/share/openxr/1/openxr_monado.json
 
 export SDL_VIDEO_FULLSCREEN_HEAD=1
 #export MANGOHUD=1
 #export MANGOHUD_DLSYM=1
 
 # Path to your oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -100,8 +102,7 @@ alias service="sudo rc-service"
 alias pm-suspend="sudo pm-suspend"
 alias halt="loginctl poweroff"
 alias cpuinfo="cat /proc/cpuinfo"
-alias gitpro="GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa_pro -F /dev/null'"
-
+alias gitpro="GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa_pro -F /dev/null' git"
 
 if [[ -z "$STY" ]] && [[ ! "$(tty)" =~ ^("/dev/tty") ]]; then
    screen -xRR session_name
