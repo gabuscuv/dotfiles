@@ -2,19 +2,43 @@ app-admin/conky nvidia
 app-emulaion/virtualbox vnc
 app-emulation/libvirt virt-network pm-utils
 app-emulation/qemu vhost-net virtfs spice usb usbredir
+app-text/texlive-core cjk xetex
+app-text/texlive graphics
 dev-java/openjdk-bin gentoo-vm
 dev-java/openjdk gentoo-vm
+>=dev-lang/fpc-3.0.4 source
 dev-lang/python sqlite
+>=dev-python/certifi-10001-r1 python_targets_python3_7
+>=dev-python/mako-1.1.3-r1 python_targets_python3_7
+>=dev-python/markupsafe-1.1.1-r1 python_targets_python3_7
+>=dev-python/setuptools-50.3.0 python_targets_python3_7
+>=dev-python/setuptools_scm-4.1.2-r1 python_targets_python3_7
+dev-util/ostree curl
+dev-util/vulkan-tools cube
+games-emulation/retroarch-assets ozone xmb
 games-fps/darkplaces cdsound
+games-util/mangohud #xnvctrl
+games-util/vkbasalt reshade-shaders
 gnome-base/gvfs samba fuse zeroconf
 media-fonts/powerline-fonts sourcecodepro robotomono hack ubuntumono inconsolata dejavusansmono anonymouspro droidsansmono
 media-gfx/blender cuda llvm opencl cycles openimageio
+media-libs/gd fontconfig
+media-libs/gulkan drm
+media-libs/gxr drm egl
 media-libs/harfbuzz icu
+media-libs/libsdl2 jack
 media-libs/mesa -vulkan
-media-sound/pulseaudio -bluetooth -native-headset -ofono-headset abi_x86_32
+media-libs/openal jack
+media-libs/opus custom-modes
+media-libs/portaudio jack
+media-plugins/alsa-plugins jack
+media-sound/jack2 libsamplerate abi_x86_32
+media-sound/mpg123 jack
+media-sound/pulseaudio -bluetooth -native-headset -ofono-headset jack abi_x86_32
 media-video/ffmpeg openssl libcaca
 media-video/mpv libcaca
 media-video/obs-studio python speex imagemagick
+>=net-dns/avahi-0.8-r2 mdnsresponder-compat
 net-dns/dnsmasq script
 net-fs/samba winbind zeroconf
 net-misc/spice-gtk usbredir
@@ -25,16 +49,9 @@ sys-kernel/gentoo-sources experimental
 sys-libs/ncurses tinfo
 sys-libs/tdb python
 sys-libs/tevent python
+>=sys-libs/zlib-1.2.11-r2 static-libs
+sys-libs/zlib minizip
 www-client/w3m imlib
-x11-drivers/nvidia-drivers static-libs uvm compat
+x11-drivers/nvidia-drivers uvm multilib gtk3 static-libs
 x11-misc/polybar i3wm mpd network
 x11-terms/rxvt-unicode vanilla 256-color xft fonts unicode3
-games-emulation/retroarch-assets ozone xmb
-sys-libs/zlib minizip
-app-text/texlive graphics
-app-text/texlive-core cjk xetex
-media-libs/gd fontconfig
-games-util/mangohud xnvctrl
-media-libs/gxr drm egl
-media-libs/gulkan drm
-

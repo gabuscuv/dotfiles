@@ -3,9 +3,9 @@ export PATH=$PATH:$HOME/.local/bin:$HOME/.dotnet:~/.npm-global/bin:/var/lib/flat
 
 export XR_RUNTIME_JSON=/usr/share/openxr/1/openxr_monado.json
 
-export SDL_VIDEO_FULLSCREEN_HEAD=1
-#export MANGOHUD=1
-#export MANGOHUD_DLSYM=1
+#export SDL_VIDEO_FULLSCREEN_HEAD=1
+export MANGOHUD=1
+export MANGOHUD_DLSYM=1
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -94,9 +94,9 @@ alias etc-update="sudo etc-update"
 alias emerge='sudo emerge'
 alias upgrade='sudo emerge --ask -uDU --with-bdeps=y @world'
 alias update='sudo emerge --sync'
-alias wine64="WINEPREFIX="$HOME/.wine64" WINEARCH=win64 wine64"
-alias wine32="WINEPREFIX="$HOME/.wine" WINEARCH=win32 wine"
-alias wine=wine32
+alias wine64="WINEPREFIX="$HOME/.wine" WINEARCH=win64 wine64"
+alias wine32="WINEPREFIX="$HOME/.wine32" WINEARCH=win32 wine"
+alias wine=wine64
 alias cls="clear"
 alias service="sudo rc-service"
 alias pm-suspend="sudo pm-suspend"
