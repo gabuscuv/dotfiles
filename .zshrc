@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$PATH:$HOME/.local/bin:$HOME/.dotnet:~/.npm-global/bin:/var/lib/flatpak/exports/bin:$HOME/.gem/ruby/2.5.0/bin
-
+export PATH=$PATH:$HOME/.local/bin:$HOME/.dotnet:~/.npm-global/bin:/var/lib/flatpak/exports/bin:$HOME/.gem/ruby/2.5.0/bin:$HOME/.dotnet/tools:$HOME/go/bin
+export DOTNET_ROOT=$(dirname $(realpath $(which dotnet)))
 export XR_RUNTIME_JSON=/usr/share/openxr/1/openxr_monado.json
 
 #export SDL_VIDEO_FULLSCREEN_HEAD=1
@@ -23,7 +23,7 @@ ZSH_THEME="agnoster"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# DISABLE_AUTO_UPDATE="false"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -48,7 +48,7 @@ ZSH_THEME="agnoster"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="dd/mm/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -57,7 +57,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git golang screen vscode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,19 +99,21 @@ alias wine32="WINEPREFIX="$HOME/.wine32" WINEARCH=win32 wine"
 alias wine=wine64
 alias cls="clear"
 alias service="sudo rc-service"
-alias pm-suspend="sudo pm-suspend"
+alias pm-suspend="loginctl suspend"
 alias halt="loginctl poweroff"
 alias cpuinfo="cat /proc/cpuinfo"
 alias gitpro="GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa_pro -F /dev/null' git"
+alias start-wayland="XDG_SESSION_TYPE=wayland dbus-run-session startplasma-wayland"
 
-if [[ -z "$STY" ]] && [[ ! "$(tty)" =~ ^("/dev/tty") ]]; then
-   screen -xRR session_name
-fi
+
+#if [[ -z "$STY" ]] && [[ ! "$(tty)" =~ ^("/dev/tty") ]]; then
+#   screen -xRR session_name
+#fi
 ## Alias VirtualMachines Passthou
 alias vrdev="start-virtual-machine win10-vrdev"
 alias work="start-virtual-machine win8.1"
-alias gaming="start-virtual-machine win10-gaming"
-alias gaming-nohyper="start-virtual-machine win10-gaming-nohypervisor"
+alias gaming="start-virtual-machine win10-gaming --swap"
+alias gaming-nohyper="start-virtual-machine win10-gaming-nohypervisor --swap"
 alias zenmode="start-virtual-machine debian10-zenmode"
 
 #if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
