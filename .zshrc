@@ -1,15 +1,69 @@
-# If you come from bash you might have to change your $PATH.
-export PATH=$PATH:$HOME/.local/bin:$HOME/.dotnet:~/.npm-global/bin:/var/lib/flatpak/exports/bin:$HOME/.gem/ruby/2.5.0/bin:$HOME/.dotnet/tools:$HOME/go/bin
-export DOTNET_ROOT=$(dirname $(realpath $(which dotnet)))
-export XR_RUNTIME_JSON=/usr/share/openxr/1/openxr_monado.json
+#XDGPaths
+export ANDROID_HOME="$XDG_DATA_HOME"/android
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_STATE_HOME=$HOME/.local/state
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_RUNTIME_DIR=/run/user/$UID
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+export KDEHOME="$XDG_CONFIG_HOME"/kde
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss
+export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle
+export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
+export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
+export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export WINEPREFIX="$XDG_DATA_HOME"/wine
+export WINEPREFIX32="$XDG_DATA_HOME"/wine32
+export ZDOTDIR=$HOME/.config/zsh
+export HISTFILE="$XDG_STATE_HOME"/zsh/history
+export GOPATH="$XDG_DATA_HOME"/go
+export GEM_HOME="${XDG_DATA_HOME}"/gem
+export GEM_SPEC_CACHE="${XDG_CACHE_HOME}"/gem
+export PYTHONSTARTUP="/etc/python/pythonrc"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 
+# If you come from bash you might have to change your $PATH.
+export PATH=$PATH:$HOME/.local/bin:$HOME/.dotnet:$HOME/.npm-global/bin:/var/lib/flatpak/exports/bin:$GEM_HOME/ruby/2.7.0/bin:$HOME/.dotnet/tools:$GOPATH/bin
+export DOTNET_ROOT=$(dirname $(realpath $(which dotnet)))
+export XR_RUNTIME_JSON=/usr/local/share/openxr/1/openxr_monado.json
+#export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
+#export PKG_CONFIG_PATH=$HOME/.local/lib/pkgconfig:$PKG_CONFIG_PATH
+
+#export VR_OVERRIDE=$HOME/git-third/OpenOVR/build
+export PRESSURE_VESSEL_FILESYSTEMS_RW=/run/user/1000/monado_comp_ipc
+export WINEDLLPATH=$WINEDLLPATH:/opt/discord-rpc/bin64:/opt/discord-rpc/bin32
+
+export COMMON_FLAGS="-march=native -O2 -pipe"
+export CFLAGS=$COMMON_FLAGS
+export CXXFLAGS=$COMMON_FLAGS
+export FCFLAGS=$COMMON_FLAGS
+export FFFLAGS=$COMMON_FLAGS
+export MAKEOPTS="-j17"
+
+
+export ENABLE_VKBASALT=0
 #export SDL_VIDEO_FULLSCREEN_HEAD=1
 export MANGOHUD=1
-export MANGOHUD_DLSYM=1
+export MANGOHUD_DLSYM=0
+export MANGOHUD_CONFIG="read_cfg,fps_limit=144"
+#export GBM_BACKEND=nvidia-drm
+#export __GLX_VENDOR_LIBRARY_NAME=nvidia
 
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export bsltinstall=$HOME/.local
+export bsltdeps=$HOME/git-third/basalt
 
+export PROTON_HIDE_NVIDIA_GPU=0
+export PROTON_ENABLE_NVAPI=1
+export PROTON_ENABLE_NGX_UPDATER=1
+export VKD3D_CONFIG=dxr,dxr11
+export VKD3D_FEATURE_LEVEL=12_1
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -59,7 +113,7 @@ HIST_STAMPS="dd/mm/yyyy"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git golang screen vscode)
 
-source $ZSH/oh-my-zsh.sh
+source $XDG_DATA_HOME/oh-my-zsh/oh-my-zsh.sh
 
 # User configuration
 
@@ -88,14 +142,15 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias i3-config="nano ~/.config/i3/config"
-alias zshconfig="nano ~/.zshrc"
-alias ohmyzsh="nano ~/.oh-my-zsh"
+alias zshconfig="nano $ZDOTDIR"
+#alias ohmyzsh="nano ~/.oh-my-zsh"
 alias etc-update="sudo etc-update"
+#alias nuget="mono /usr/bin/nuget"
 alias emerge='sudo emerge'
 alias upgrade='sudo emerge --ask -uDU --with-bdeps=y @world'
 alias update='sudo emerge --sync'
-alias wine64="WINEPREFIX="$HOME/.wine" WINEARCH=win64 wine64"
-alias wine32="WINEPREFIX="$HOME/.wine32" WINEARCH=win32 wine"
+alias wine64="WINEPREFIX="$WINEPREFIX" WINEARCH=win64 wine64"
+alias wine32="WINEPREFIX="$WINEPREFIX32" WINEARCH=win32 wine"
 alias wine=wine64
 alias cls="clear"
 alias service="sudo rc-service"
@@ -104,11 +159,14 @@ alias halt="loginctl poweroff"
 alias cpuinfo="cat /proc/cpuinfo"
 alias gitpro="GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa_pro -F /dev/null' git"
 alias start-wayland="XDG_SESSION_TYPE=wayland dbus-run-session startplasma-wayland"
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
+alias nvidia-settings="nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings"
 
+#alias modelconv
+alias pmx2vrm='modelconv -physics -unlit "*" -autotpose "右腕,左腕" -format vrm -vrmconfig "$HOME/Documents/modelconv_vrmpresets/mmd.json'
 
-#if [[ -z "$STY" ]] && [[ ! "$(tty)" =~ ^("/dev/tty") ]]; then
-#   screen -xRR session_name
-#fi
+alias scrot='scrot ~/Pictures/Screenshots/%b%d::%H%M%S.png'
 ## Alias VirtualMachines Passthou
 alias vrdev="start-virtual-machine win10-vrdev"
 alias work="start-virtual-machine win8.1"
@@ -132,4 +190,16 @@ alias zenmode="start-virtual-machine debian10-zenmode"
 #fi
 #unset __conda_setup
 # <<< conda initialize <<<
+
+
+# Custom MountPoints
+#bwrap --ro-bind / / \
+#      --bind $HOME/Documents/Obsidian/vault/🏝\ Spaces/Reviews/ $HOME/git/media-reviews/docs \
+#      --dev /dev \
+#      zsh
+
+## Start shell with screen
+if [[ -z "$STY" ]] && [[ ! "$(tty)" =~ ^("/dev/tty") ]]; then
+   screen -xRR session_name
+fi
 

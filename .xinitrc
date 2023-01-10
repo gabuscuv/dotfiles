@@ -2,7 +2,8 @@
 #xrandr --auto
 ./.screenlayout/main.sh 
 udiskie &
-[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+[[ -f "$XDG_CONFIG_HOME/X11/xresources" ]] && xrdb -merge -I "$XDG_CONFIG_HOME/X11/xresources"
+#/usr/bin/gentoo-pipewire-launcher
 # Here KDE is kept as default
 session=${1:-kde}
 
