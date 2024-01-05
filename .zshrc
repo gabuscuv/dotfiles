@@ -1,9 +1,9 @@
 #XDGPaths
 export ANDROID_HOME="$XDG_DATA_HOME"/android
 export XDG_DATA_HOME=$HOME/.local/share
-export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CONFIG_HOME=/home-overlay/$USER/.config
 export XDG_STATE_HOME=$HOME/.local/state
-export XDG_CACHE_HOME=$HOME/.cache
+export XDG_CACHE_HOME=/home-overlay/$USER/.cache
 export XDG_RUNTIME_DIR=/run/user/$UID
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
@@ -29,6 +29,8 @@ export GEM_SPEC_CACHE="${XDG_CACHE_HOME}"/gem
 export PYTHONSTARTUP="/etc/python/pythonrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 
+STEAM_COMPAT_MOUNTS="$HOME"
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$PATH:$HOME/.local/bin:$HOME/.dotnet:$HOME/.npm-global/bin:/var/lib/flatpak/exports/bin:$GEM_HOME/ruby/2.7.0/bin:$HOME/.dotnet/tools:$GOPATH/bin
 export DOTNET_ROOT=$(dirname $(realpath $(which dotnet)))
@@ -37,7 +39,7 @@ export XR_RUNTIME_JSON=/usr/local/share/openxr/1/openxr_monado.json
 #export PKG_CONFIG_PATH=$HOME/.local/lib/pkgconfig:$PKG_CONFIG_PATH
 
 #export VR_OVERRIDE=$HOME/git-third/OpenOVR/build
-export PRESSURE_VESSEL_FILESYSTEMS_RW=/run/user/1000/monado_comp_ipc
+export PRESSURE_VESSEL_FILESYSTEMS_RW=/run/user/1000/monado_comp_ipc:/usr/local/
 export WINEDLLPATH=$WINEDLLPATH:/opt/discord-rpc/bin64:/opt/discord-rpc/bin32
 
 export COMMON_FLAGS="-march=native -O2 -pipe"
@@ -55,6 +57,8 @@ export MANGOHUD_DLSYM=0
 export MANGOHUD_CONFIG="read_cfg,fps_limit=144"
 #export GBM_BACKEND=nvidia-drm
 #export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export OBS_VKCAPTURE=1
+export OBS_VKCAPTURE_STATUSFILE=1
 
 export bsltinstall=$HOME/.local
 export bsltdeps=$HOME/git-third/basalt
@@ -158,19 +162,25 @@ alias pm-suspend="loginctl suspend"
 alias halt="loginctl poweroff"
 alias cpuinfo="cat /proc/cpuinfo"
 alias gitpro="GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa_pro -F /dev/null' git"
-alias start-wayland="XDG_SESSION_TYPE=wayland dbus-run-session startplasma-wayland"
+alias start-wayland="wayland_enabler.sh;XDG_SESSION_TYPE=wayland dbus-run-session startplasma-wayland"
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 alias nvidia-settings="nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings"
+
+alias duperemove="duperemove --hashfile=$HOME/deduperhash.db"
+
+alias nano="vi"
 
 #alias modelconv
 alias pmx2vrm='modelconv -physics -unlit "*" -autotpose "右腕,左腕" -format vrm -vrmconfig "$HOME/Documents/modelconv_vrmpresets/mmd.json'
 
 alias scrot='scrot ~/Pictures/Screenshots/%b%d::%H%M%S.png'
+alias com.heroicgameslauncher.hgl='XDG_DATA_HOME=\"/home-overlay/$USER/.local/share\" com.heroicgameslauncher.hgl'
 ## Alias VirtualMachines Passthou
-alias vrdev="start-virtual-machine win10-vrdev"
+alias vrdev="start-virtual-machine win10-vrdev --swap"
 alias work="start-virtual-machine win8.1"
 alias gaming="start-virtual-machine win10-gaming --swap"
+alias gaming-secureboot="start-virtual-machine win10-secureboot --swap"
 alias gaming-nohyper="start-virtual-machine win10-gaming-nohypervisor --swap"
 alias zenmode="start-virtual-machine debian10-zenmode"
 
@@ -199,7 +209,6 @@ alias zenmode="start-virtual-machine debian10-zenmode"
 #      zsh
 
 ## Start shell with screen
-if [[ -z "$STY" ]] && [[ ! "$(tty)" =~ ^("/dev/tty") ]]; then
+if [[ -z "$STY" ]] && [[ ! "$(tty)" =~ ^("/dev/tty") ]] && [[ -z "$VSCODE_INJECTION" ]]; then
    screen -xRR session_name
 fi
-

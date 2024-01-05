@@ -2,7 +2,7 @@ app-admin/conky nvidia
 app-emulation/pcem networking
 app-emulaion/virtualbox vnc
 app-emulation/libvirt virt-network pm-utils
-app-emulation/qemu vhost-net virtfs spice usb usbredir
+app-emulation/qemu vhost-net virtfs spice usb usbredir fuse opengl virgl
 dev-java/openjdk-bin gentoo-vm
 dev-java/openjdk gentoo-vm
 dev-lang/python sqlite
@@ -12,10 +12,12 @@ media-fonts/powerline-fonts sourcecodepro robotomono hack ubuntumono inconsolata
 media-gfx/blender cuda llvm opencl cycles openimageio
 media-libs/harfbuzz icu
 media-libs/mesa -vulkan
-media-sound/pulseaudio -bluetooth -native-headset -ofono-headset jack abi_x86_32
-media-video/ffmpeg openssl libcaca
+media-sound/pulseaudio -bluetooth -native-headset -ofono-headset -jack abi_x86_32 -daemon
+media-video/pipewire sound-server bluetooth jack-sdk v4l extra flatpak
+media-video/ffmpeg openssl
 media-video/mpv -libcaca libmpv
-media-video/obs-studio python speex imagemagick
+media-gfx/imagemagick heif
+media-video/obs-studio python speex imagemagick nvenc
 net-dns/dnsmasq script
 games-action/re3 -opus -sndfile -sanitizer
 games-action/revc -opus -sndfile -sanitizer
@@ -43,38 +45,65 @@ media-libs/gxr drm egl
 media-libs/gulkan drm
 media-libs/opus custom-modes
 media-sound/jack2 libsamplerate abi_x86_32
-media-plugins/alsa-plugins jack
-media-libs/openal jack
-media-libs/libsdl2 jack
-media-sound/mpg123 jack
-media-libs/portaudio jack
+media-plugins/alsa-plugins -jack
+media-libs/openal -jack
+media-libs/libsdl2 -jack gles2
+media-sound/mpg123 -jack
+media-libs/portaudio -jack
 dev-util/ostree curl
-# x11-misc/synergy
->=net-dns/avahi-0.8-r2 mdnsresponder-compat
-# required by sys-libs/libunwind-1.5.0::gentoo[zlib],app-emulation/wine-staging[unwind]
->=sys-libs/zlib-1.2.11-r2 static-libs
->=dev-lang/fpc-3.0.4 source
-games-util/vkbasalt reshade-shaders
+net-dns/avahi mdnsresponder-compat
+sys-libs/zlib static-libs
+dev-lang/fpc source
 sci-physics/bullet threads
 media-libs/libmediaart vala gtk introspection -qt5
 dev-util/vulkan-tools -cube
 dev-lang/php -webp
-# required by app-crypt/swtpm-0.6.0::gentoo[gnutls]
 net-libs/gnutls tools
-# required by x11-libs/pango::gentoo,x11-libs/vte,app-emulation/virt-manager
 media-libs/freetype harfbuzz
-# required by virtual/rust,gnome-base/librsvg,media-gfx/imagemagick[svg],app-misc/neofetch-7.1.0[X]
 dev-lang/rust rustfmt
 dev-qt/qtwebengine jumbo-build
 sys-apps/util-linux magic
-# required by app-crypt/swtpm-0.6.0-r1[gnutls]
 net-libs/gnutls pkcs11
-# required by dev-util/bcc,dev-util/bpftrace
->=dev-libs/libbpf-0.5.0 static-libs
-# required by games-action/minecraft-launcher-1035::gentoo
+dev-libs/libbpf static-libs
 net-misc/curl adns
 sys-firmware/edk2-ovmf binary
-# required by discord,dev-libs/libappindicator
 dev-libs/libdbusmenu gtk3
-games-emulation/sdlmame tools -arcade mess
+games-emulation/sdlmame tools arcade -mess
 net-misc/rsync lz4
+dev-lang/python tk
+dev-libs/libzip zstd
+dev-util/xdelta lzma
+games-util/mangohud -abi_x86_32
+dev-libs/libpcre2 pcre32
+media-libs/rubberband ladspa
+app-arch/brotli python
+sys-libs/libcap static-libs
+dev-dotnet/newtonsoft-json net45 nupkg
+dev-dotnet/xdt-for-monodevelop net45
+dev-dotnet/nuget net45
+dev-dotnet/newtonsoft-json pkg-config
+dev-dotnet/system-collections-immutable pkg-config
+dev-dotnet/system-reflection-metadata pkg-config
+media-libs/freetype brotli
+kde-plasma/plasma-meta -crypto
+dev-lang/php:7.4 curl truetype pcntl gd zip sockets
+dev-lang/php gd
+dev-dotnet/gentoo-net-sdk msbuild_targets_msbuild15-9
+app-emulation/86Box new-dynarec threads qt5
+media-sound/easyeffects -doc
+net-misc/remmina rdp
+app-misc/mime-types nginx
+app-text/poppler -abi_x86_32
+media-libs/openxr layers
+dev-dotnet/system-reflection-metadata pkg-config
+gui-libs/gtk-layer-shell introspection
+dev-libs/raft lz4
+sys-fs/squashfs-tools lzma
+media-libs/phonon -vlc
+media-sound/easyeffects calf
+media-plugins/calf lv2
+sys-fs/lvm2 lvm
+media-libs/libplacebo -abi_x86_32
+x11-base/xwayland libei
+dev-qt/qttools designer
+x11-libs/wxGTK gstreamer
