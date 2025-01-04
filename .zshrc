@@ -1,5 +1,7 @@
 #XDGPaths
-export ANDROID_HOME="$XDG_DATA_HOME"/android
+#export ANDROID_HOME="$XDG_DATA_HOME"/android
+export ANDROID_HOME=$HOME/Android/Sdk
+export NDK_ROOT=$ANDROID_HOME/Sdk/ndk
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_CONFIG_HOME=/home-overlay/$USER/.config
 export XDG_STATE_HOME=$HOME/.local/state
@@ -18,7 +20,7 @@ export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
 export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
-export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+#export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export WINEPREFIX="$XDG_DATA_HOME"/wine
 export WINEPREFIX32="$XDG_DATA_HOME"/wine32
 export ZDOTDIR=$HOME/.config/zsh
@@ -31,10 +33,12 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 
 STEAM_COMPAT_MOUNTS="$HOME"
 
+#alias startx="start-s"
+alias startw="start-wayland"
 # If you come from bash you might have to change your $PATH.
 export PATH=$PATH:$HOME/.local/bin:$HOME/.dotnet:$HOME/.npm-global/bin:/var/lib/flatpak/exports/bin:$GEM_HOME/ruby/2.7.0/bin:$HOME/.dotnet/tools:$GOPATH/bin
 export DOTNET_ROOT=$(dirname $(realpath $(which dotnet)))
-export XR_RUNTIME_JSON=/usr/local/share/openxr/1/openxr_monado.json
+#export XR_RUNTIME_JSON=/usr/local/share/openxr/1/openxr_monado.json
 #export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 #export PKG_CONFIG_PATH=$HOME/.local/lib/pkgconfig:$PKG_CONFIG_PATH
 
@@ -57,8 +61,8 @@ export MANGOHUD_DLSYM=0
 export MANGOHUD_CONFIG="read_cfg,fps_limit=144"
 #export GBM_BACKEND=nvidia-drm
 #export __GLX_VENDOR_LIBRARY_NAME=nvidia
-export OBS_VKCAPTURE=1
-export OBS_VKCAPTURE_STATUSFILE=1
+export OBS_VKCAPTURE=0
+export OBS_VKCAPTURE_STATUSFILE=0
 
 export bsltinstall=$HOME/.local
 export bsltdeps=$HOME/git-third/basalt
@@ -183,6 +187,7 @@ alias gaming="start-virtual-machine win10-gaming --swap"
 alias gaming-secureboot="start-virtual-machine win10-secureboot --swap"
 alias gaming-nohyper="start-virtual-machine win10-gaming-nohypervisor --swap"
 alias zenmode="start-virtual-machine debian10-zenmode"
+alias vscode="MANGOHUD=0 VKCAPTURE=0 code"
 
 #if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
@@ -212,3 +217,10 @@ alias zenmode="start-virtual-machine debian10-zenmode"
 if [[ -z "$STY" ]] && [[ ! "$(tty)" =~ ^("/dev/tty") ]] && [[ -z "$VSCODE_INJECTION" ]]; then
    screen -xRR session_name
 fi
+
+# bun completions
+[ -s "/home/sifi/.bun/_bun" ] && source "/home/sifi/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
