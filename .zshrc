@@ -2,6 +2,7 @@
 #export ANDROID_HOME="$XDG_DATA_HOME"/android
 export ANDROID_HOME=$HOME/Android/Sdk
 export NDK_ROOT=$ANDROID_HOME/Sdk/ndk
+export XDG_DESKTOP_DIR="$HOME/Desktop"
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_CONFIG_HOME=/home-overlay/$USER/.config
 export XDG_STATE_HOME=$HOME/.local/state
@@ -58,7 +59,7 @@ export ENABLE_VKBASALT=0
 #export SDL_VIDEO_FULLSCREEN_HEAD=1
 export MANGOHUD=1
 export MANGOHUD_DLSYM=0
-export MANGOHUD_CONFIG="read_cfg,fps_limit=144"
+export MANGOHUD_CONFIG="read_cfg,fps_limit=138" ## Seems better for VRR
 #export GBM_BACKEND=nvidia-drm
 #export __GLX_VENDOR_LIBRARY_NAME=nvidia
 export OBS_VKCAPTURE=0
@@ -67,9 +68,10 @@ export OBS_VKCAPTURE_STATUSFILE=0
 export bsltinstall=$HOME/.local
 export bsltdeps=$HOME/git-third/basalt
 
-export PROTON_HIDE_NVIDIA_GPU=0
-export PROTON_ENABLE_NVAPI=1
-export PROTON_ENABLE_NGX_UPDATER=1
+export PROTON_FSR4_UPGRADE=1 
+export PROTON_ENABLE_WAYLAND=1 
+export PROTON_ENABLE_HDR=1 
+export WAYLANDDRV_PRIMARY_MONITOR=DP-1
 export VKD3D_CONFIG=dxr,dxr11
 export VKD3D_FEATURE_LEVEL=12_1
 # Set name of the theme to load. Optionally, if you set this to "random"
